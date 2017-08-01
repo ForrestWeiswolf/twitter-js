@@ -43,6 +43,9 @@ code {
 
 .tweetbox {
   padding: 7px;
+  border: 2px solid lightblue;
+  border-radius: 5px;
+  margin: 3px;
 }
 
 .tweetbox img {
@@ -56,4 +59,8 @@ code {
 }
 .content .by {
   font-weight: bold;
+}
+
+li{
+  list-style: none;
 }
