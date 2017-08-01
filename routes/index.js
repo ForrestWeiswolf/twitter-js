@@ -19,7 +19,7 @@ router.get('/tweets/:id', function(req, res) {
 
 router.get('/', function (req, res) {
   let tweets = tweetBank.list();
-  res.render( 'index', { tweets: tweets } );
+  res.render( 'index', { tweets: tweets, showForm : true} );
 });
 
 module.exports = router;
