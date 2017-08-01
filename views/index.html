@@ -9,12 +9,11 @@
     <div class="col-md-3">
       <img src="https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg"><br>
       <b>Your Name</b><br>
-      100 followers
+      1000 followers
 
       {% if showForm %} <form action="/tweets" method="POST">
-        <label for="name_field">Name:</label>
-        <input name="name" type="text" id="name_field" />
-        <br>
+        <input name="name" type="text" id="name_field" value="{{ name }}"/>
+
         <label for="text_field">Text:</label>
         <input name="text" type="text" id="text_field" style="width: 350px;" />
 
@@ -27,7 +26,7 @@
       {% for tweet in tweets %}
         <div class="tweetbox">
           <li><img src='https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg'></li>
-          <li><a href={{ '/users/' + tweet.name.replace(' ', '%20') }}> {{ tweet.name }} </a></li>
+          <li><a href="{{ '/users/' + tweet.encodedName }}"> {{ tweet.name }} </a></li>
           <li>{{tweet.content}}</li>
         </div>
       {% endfor %}
