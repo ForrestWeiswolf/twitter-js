@@ -13,12 +13,7 @@ var locals = {
 
 app.set('view engine', 'html');
 app.engine('html', nunjucks.render);
-nunjucks.configure('views');
-
-// nunjucks.configure('views', {noCache: true});
-// nunjucks.render('index.html', locals, function (err, output) {
-//     console.log(output);
-// });
+nunjucks.configure('views', { noCache: true });
 
 app.use('/', function(req, res, next){
   console.log(req.method, req.url)
@@ -32,7 +27,10 @@ app.use('/special', function(req, res, next){
 })
 
 app.get('/special/anything', function(req, res){
-  res.send('anything')
+  nunjucks.render('index.html', locals, function (err, output) {
+    if(err) throw err
+    res.send(output);
+  });
 })
 
 app.get('/something', function(req, res){
