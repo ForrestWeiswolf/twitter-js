@@ -1,6 +1,7 @@
 const express = require('express');
 const nunjucks = require('nunjucks');
 const app = express();
+const routes = require('./routes')
 
 var locals = {
     title: 'An Example',
@@ -21,22 +22,7 @@ app.use('/', function(req, res, next){
   console.log(res.statusCode)
 })
 
-app.use('/special', function(req, res, next){
-  console.log("special")
-  next();
-})
-
-app.get('/special/anything', function(req, res){
-  nunjucks.render('index.html', locals, function (err, output) {
-    if(err) throw err
-    res.send(output);
-  });
-})
-
-app.get('/something', function(req, res){
-  res.send('anything')
-})
-
+app.use('/', routes)
 
 
 app.listen(3000, function(){
