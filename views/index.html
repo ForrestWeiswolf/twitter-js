@@ -17,7 +17,7 @@
       {% for tweet in tweets %}
         <div class="tweetbox">
           <li><img src='https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg'></li>
-          <li>{{tweet.name}}</li>
+          <li><a href={{ '/users/' + tweet.name.replace(' ', '%20') }}> {{ tweet.name }} </a></li>
           <li>{{tweet.content}}</li>
         </div>
       {% endfor %}
