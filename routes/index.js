@@ -1,3 +1,4 @@
+const socketio = require('socket.io');
 const express = require('express');
 const router = express.Router();
 // could use one line instead: const router = require('express').Router();
@@ -21,8 +22,8 @@ module.exports = function (io) {
   router.post('/tweets', function(req, res) {
     var name = req.body.name;
     var text = req.body.text;
-    tweetBank.add(name, text);
-    io.sockets.emit('newTweet', {name : name, text : text});
+    tweetBank.add(name, text, encodeURI(name));
+    socketio.sockets.emit('newTweet', {name : name, text : text, encodedName : encodeURI(name)});
     res.redirect('/');
   });
 

@@ -4,7 +4,7 @@ var data = [];
 var idCounter = 1;
 
 function add (name, content) {
-  data.push({id: idCounter, name: name, content: content });
+  data.push({id: idCounter, name: name, content: content, encodedName : encodeURI(name)});
   idCounter++;
 }
 
